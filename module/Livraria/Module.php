@@ -13,6 +13,7 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
 use Livraria\Model\CategoriaTable;
+use Livraria\Service\Categoria as CategoriaService;
 
 class Module
 {
@@ -44,12 +45,17 @@ class Module
     {
         return array(
             'factories' => array(
+
                 'Livraria\Model\CategoriaService' => function($service) {
                     $dbAdapter = $service->get('Zend\Db\Adapter\Adapter');
                     $categoriaTable = new CategoriaTable($dbAdapter);
                     $categoriaService = new Model\CategoriaService($categoriaTable);
 
                     return $categoriaService;
+                },
+
+                'Livraria\Service\Categoria' => function($service) {
+                    return new CategoriaService($service->get('Doctrine\ORM\EntityManager'));
                 }
             )
         );
