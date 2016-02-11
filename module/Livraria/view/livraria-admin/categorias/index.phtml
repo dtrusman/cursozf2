@@ -1,0 +1,24 @@
+<h1>Categorias</h1>
+<br />
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <?php foreach ($this->data as $categorias): ?>
+            <tr>
+                <td><?=$categorias->getId()?></td>
+                <td><?=$categorias->getNome()?></td>
+                <td></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?= $this->paginationControl($this->data, 'Sliding', 'paginator') ?>
