@@ -15,6 +15,7 @@
         public function __construct($options = null)
         {
             Configurator::configure($this, $options);
+            $this->livros = new ArrayCollection();
         }
 
         /**
@@ -31,6 +32,11 @@
         */
         private $nome;
 
+        /**
+        * @ORM\OneToMany(targetEntity="Livraria\Entity\Livro", mappedBy="categoria")
+        */
+        private $livros;
+
         public function getId()
         {
             return $this->id;
@@ -44,6 +50,11 @@
         public function setNome($nome)
         {
             return $this->nome = $nome;
+        }
+
+        public function getLivros()
+        {
+            return $this->livros;
         }
 
         public function __toString()
