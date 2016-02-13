@@ -4,6 +4,13 @@
 
 <ul>
     <?php foreach ($this->categorias as $categoria): ?>
-        <li><?=$categoria?></li>
+        <li>
+            <?=$categoria?>
+            <ul>
+                <?php foreach ($categoria->getLivros() as $livro): ?>
+                    <li><?=$livro->getNome()?></li>
+                <?php endforeach;?>
+            </ul>
+        </li>
     <?php endforeach; ?>
 </ul>

@@ -75,6 +75,10 @@ return array(
             'livraria-admin/auth' => 'LivrariaAdmin\Controller\AuthController',
         ),
     ),
+    'module_layouts' => array(
+        'Livraria' => 'layout/layout',
+        'LivrariaAdmin' => 'layout/layout-admin'
+    ),
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
