@@ -16,6 +16,7 @@ use Livraria\Model\CategoriaTable;
 use Livraria\Service\Categoria as CategoriaService;
 use Livraria\Service\Livro as LivroService;
 use LivrariaAdmin\Form\LivroForm as LivroFrm;
+use Livraria\Service\User as UserService;
 
 class Module
 {
@@ -67,6 +68,9 @@ class Module
                     $repository = $em->getRepository('Livraria\Entity\Categoria');
                     $categorias = $repository->fetchPairs();
                     return new LivroFrm(null, $categorias);
+                },
+                'Livraria\Service\User' => function($service) {
+                    return new UserService($service->get('Doctrine\ORM\EntityManager'));
                 },
             )
         );

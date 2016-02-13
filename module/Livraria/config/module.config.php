@@ -50,7 +50,8 @@ return array(
         'invokables' => array(
             'Livraria\Controller\Index' => Controller\IndexController::class,
             'categorias' => 'LivrariaAdmin\Controller\CategoriasController',
-            'livros' => 'LivrariaAdmin\Controller\LivrosController'
+            'livros' => 'LivrariaAdmin\Controller\LivrosController',
+            'users' => 'LivrariaAdmin\Controller\UsersController',
         ),
     ),
     'view_manager' => array(

@@ -1,0 +1,44 @@
+<h1>Novo User</h1>
+
+<?php
+
+    $form = $this->form;
+
+    $form->setAttribute('action', $this->url('livraria-admin', array('controller' => 'users', 'action' => 'new')));
+    $form->setAttribute('class', "form-horizontal");
+
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+    echo $this->formHidden($form->get('id'));
+?>
+<div class="form-group">
+    <div class="col-xs-12 col-md-6">
+        <label for="nome">Nome</label>
+        <?= $this->formRow($form->get('nome')); ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-xs-12 col-md-6">
+        <label for="email">Email</label>
+        <?= $this->formRow($form->get('email')); ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-xs-12 col-md-6">
+        <label for="password">Senha</label>
+        <?= $this->formRow($form->get('password')); ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-xs-12 col-md-6">
+        <?= $this->formSubmit($form->get('submit')); ?>
+    </div>
+</div>
+
+<?php
+    echo $this->form()->closeTag();
+?>
