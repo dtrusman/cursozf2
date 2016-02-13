@@ -84,12 +84,24 @@ class User
 
     public function setPassword($password)
     {
+        $hashSenha = $this->encryptPassword($password);
+
+        $this->password = $hashSenha;
+        return $this;
+    }
+
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    public function encryptPassword($password)
+    {
         $hashSenha = hash('sha512', $password.$this->salt);
         for($i=0; $i<64000;$i++)
             $hashSenha = hash('sha512', $hashSenha);
 
-        $this->password = $hashSenha;
-        return $this;
+        return $hashSenha;
     }
 
     public function toArray()
@@ -98,8 +110,8 @@ class User
             'id' => $this->getId(),
             'nome' => $this->getNome(),
             'email' => $this->getEmail(),
-            'password' => $this->getPassword()
+            'password' => $this->getPassword(),
+            'salt' => $this->salt
         );
     }
-
 }

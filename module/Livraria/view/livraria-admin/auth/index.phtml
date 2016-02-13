@@ -1,0 +1,41 @@
+<h1>Login</h1>
+
+<?php if($this->error): ?>
+    <p class="text-danger">Usuário ou senha inválidos</p>
+<?php endif; ?>
+
+<?php
+
+    $form = $this->form;
+
+    $form->setAttribute('action', $this->url('livraria-admin-auth', array('controller' => 'users', 'action' => 'new')));
+    $form->setAttribute('class', "form-horizontal");
+
+    $form->prepare();
+
+    echo $this->form()->openTag($form);
+?>
+
+<div class="form-group">
+    <div class="col-xs-12 col-md-6">
+        <label for="email">Email</label>
+        <?= $this->formRow($form->get('email')); ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-xs-12 col-md-6">
+        <label for="password">Senha</label>
+        <?= $this->formRow($form->get('password')); ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-xs-12 col-md-6">
+        <?= $this->formSubmit($form->get('submit')); ?>
+    </div>
+</div>
+
+<?php
+    echo $this->form()->closeTag();
+?>
